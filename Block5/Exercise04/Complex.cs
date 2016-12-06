@@ -33,9 +33,9 @@ namespace Exercise04
         // standard arithmetic operations 
 
         // Sum
-        public Complex complexSum(Complex firstNumber, Complex secondNumber)
+        public static Complex operator +(Complex firstNumber, Complex secondNumber)
         {
-            Complex result = new Complex(realPart, imaginaryPart);
+            Complex result = new Complex(0,0);
             result.realPart = firstNumber.realPart + secondNumber.realPart;
             result.imaginaryPart = firstNumber.imaginaryPart + secondNumber.imaginaryPart;
             
@@ -43,9 +43,9 @@ namespace Exercise04
         }
 
         // Difference 
-        public Complex complexDifference(Complex firstNumber, Complex secondNumber)
+        public static Complex operator -(Complex firstNumber, Complex secondNumber)
         {
-            Complex result = new Complex(realPart, imaginaryPart);
+            Complex result = new Complex(0,0);
             result.realPart = firstNumber.realPart - secondNumber.realPart;
             result.imaginaryPart = firstNumber.imaginaryPart - secondNumber.imaginaryPart;
 
@@ -53,9 +53,9 @@ namespace Exercise04
         }
 
         // Multiplication
-        public Complex complexMultiplication(Complex firstNumber, Complex secondNumber)
+        public static Complex operator *(Complex firstNumber, Complex secondNumber)
         {
-            Complex result = new Complex(realPart, imaginaryPart);
+            Complex result = new Complex(0, 0);
             result.realPart = (firstNumber.realPart * secondNumber.realPart) - (firstNumber.imaginaryPart * secondNumber.imaginaryPart);
             result.imaginaryPart = (firstNumber.realPart * secondNumber.imaginaryPart) + (firstNumber.imaginaryPart * secondNumber.realPart);
 
@@ -63,9 +63,9 @@ namespace Exercise04
         }
 
         // Division
-        public Complex complexDivision(Complex firstNumber, Complex secondNumber)
+        public static Complex operator /(Complex firstNumber, Complex secondNumber)
         {            
-            Complex result = new Complex(realPart, imaginaryPart);
+            Complex result = new Complex(0, 0);
             result.realPart = ((firstNumber.realPart * secondNumber.realPart) - (firstNumber.imaginaryPart * secondNumber.imaginaryPart)) / (Math.Pow(secondNumber.realPart,2) + Math.Pow(secondNumber.imaginaryPart, 2)) ;
             result.imaginaryPart = ((firstNumber.realPart * secondNumber.imaginaryPart) + (firstNumber.imaginaryPart * secondNumber.realPart)) / (Math.Pow(secondNumber.realPart, 2) + Math.Pow(secondNumber.imaginaryPart, 2)) ;
 
@@ -73,9 +73,9 @@ namespace Exercise04
         }
 
         // Coniugate
-        public Complex complexConiugate(Complex firstNumber)
+        public static Complex operator ~(Complex firstNumber)
         {
-            Complex result = new Complex(realPart, imaginaryPart);
+            Complex result = new Complex(0, 0);
             result.realPart = firstNumber.realPart;
             result.imaginaryPart = -(firstNumber.imaginaryPart);
 
