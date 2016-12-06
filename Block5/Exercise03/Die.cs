@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise02
+namespace Exercise03
 {
+    public delegate void Notifier(int counter);
+
     public class Die : IComparable<Die>
     {
         private int number;
@@ -15,11 +17,19 @@ namespace Exercise02
         public Die()
         {
             number = NewToss();
+            previousToss = 0;
+            twoSixesInARow += Dummy; // add an empty method to avoid triggering a null event
         }
 
         public void Toss()
         {
+            previousToss = number;
             number = NewToss();
+
+            if (number == 6 && previousToss == 6)
+            {
+                twoSixesInARow(0);
+            }
         }
 
         private int NewToss()
@@ -41,6 +51,14 @@ namespace Exercise02
         {
             return this.Number().CompareTo(other.Number());
         }
+        
+        public event Notifier twoSixesInARow;
+
+        private static void Dummy(int c)
+        {
+        }
+
+        private int previousToss;
     }
 
 }
