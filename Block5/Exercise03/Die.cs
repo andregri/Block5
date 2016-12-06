@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise03
 {
-    public delegate void Notifier(int counter);
+    public delegate void Notifier(ref int counter);
 
     public class Die : IComparable<Die>
     {
@@ -21,14 +21,15 @@ namespace Exercise03
             twoSixesInARow += Dummy; // add an empty method to avoid triggering a null event
         }
 
-        public void Toss()
+        public void Toss(ref int doubleSixesCounter)
         {
             previousToss = number;
             number = NewToss();
 
             if (number == 6 && previousToss == 6)
             {
-                twoSixesInARow(0);
+                twoSixesInARow(ref doubleSixesCounter);
+                previousToss = 0; // initialize previous var to avoid trigger event when die tosses a third six 
             }
         }
 
@@ -51,10 +52,10 @@ namespace Exercise03
         {
             return this.Number().CompareTo(other.Number());
         }
-        
+
         public event Notifier twoSixesInARow;
 
-        private static void Dummy(int c)
+        private static void Dummy(ref int c)
         {
         }
 
