@@ -19,15 +19,15 @@ namespace Exercise01
             switch (location)
             {
                 case "center":
-                    return (decimal)(area * 2.330);
+                    return (decimal)(area * 2330);
                 case "hinterland":
-                    return (decimal)(area * 1.707);
+                    return (decimal)(area * 1707);
                 case "ghetto":
-                    return (decimal)(area * 1.135);
+                    return (decimal)(area * 1135);
                 case "luxury":
-                    return (decimal)(area * 3.802);
+                    return (decimal)(area * 3802);
                 default:
-                    return (decimal)(area * 1.500);
+                    return (decimal)(area * 1500);
             }
         }
     }

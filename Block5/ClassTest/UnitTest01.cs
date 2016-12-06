@@ -16,8 +16,8 @@ namespace ClassTest
 
             TaxHouse centerHouse = new TaxHouse("center", true, 200, 150m);
             TaxHouse luxuryHouse = new TaxHouse("luxury", false, 350, 500m);
-            TaxBus schoolBus = new TaxBus(25, 46, 100m);
-            TaxBus oneBus = new TaxBus(50, 1, 200m);
+            TaxBus schoolBus = new TaxBus(25, 46, 1.50m);
+            TaxBus oneBus = new TaxBus(50, 1, 1.50m);
 
             taxable.Add(centerHouse);
             taxable.Add(luxuryHouse);
@@ -30,12 +30,6 @@ namespace ClassTest
             }
 
             Assert.AreEqual(1796812.5m, totalAmount);
-        }
-
-        [TestMethod]
-        public void TestMethod2()
-        {
-
         }
     }
 }

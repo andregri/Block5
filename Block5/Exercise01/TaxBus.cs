@@ -14,7 +14,7 @@ namespace Exercise01
 
         public decimal TaxValue()
         {
-            return (numberOfSeats * 1.50m);
+            return (numberOfSeats * value);
         }
 
     }
