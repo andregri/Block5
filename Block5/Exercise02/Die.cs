@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise02
 {
-    public class Die
+    public class Die : IComparable<Die>
     {
         private int number;
         static private Random randomNumberSupplier = new Random((int)DateTime.Now.Ticks);
@@ -35,6 +35,11 @@ namespace Exercise02
         public override String ToString()
         {
             return String.Format("[{0}]", number);
+        }
+
+        public int CompareTo(Die other)
+        {
+            return this.Number().CompareTo(other.Number());
         }
     }
 
