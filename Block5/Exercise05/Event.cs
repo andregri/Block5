@@ -7,17 +7,16 @@ using System.Threading.Tasks;
 
 namespace Exercise05
 {
-    class Event : IEnumerable<Participant>
+    public class Event : IEnumerable<Participant>
     {
         List<Participant> guests;
-        Participant guest;
 
         public Event()
         {
             guests = new List<Participant>();
         }
 
-        public void AddGuest()
+        public void AddGuest(Participant guest)
         {
             guests.Add(guest);
         }
