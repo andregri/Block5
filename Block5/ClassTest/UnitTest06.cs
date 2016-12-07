@@ -64,13 +64,13 @@ namespace ClassTest
         [TestMethod]
         public void TestShift()
         {
-            Interval i = new Interval(1, 5);
-            int sh = 3;
+            Interval i = new Interval(1, 3);
+            int sh = 5;
 
             int[] shiftRight = { 1, 2, 3, 4, 5, 6, 7, 8 };
             CollectionAssert.AreEqual(shiftRight, (int[])(i >> sh));
 
-            int[] shiftLeft = { 4, 5 };
+            int[] shiftLeft = { 6, 5, 4, 3 };
             CollectionAssert.AreEqual(shiftLeft, (int[])(i << sh));
         }
 
