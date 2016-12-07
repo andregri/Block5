@@ -86,5 +86,17 @@ namespace ClassTest
                 Assert.IsTrue(i is LibraryMediaItem);
             }
         }
+
+        [TestMethod]
+        public void TestDistinctMags()
+        {
+            var mags = from i in items
+                       where i is LibraryMagazine
+                       select i;
+            var dinstictMags = mags.ToList().Select(i => i.Title).Distinct();
+
+            Assert.AreEqual(1, dinstictMags.ToArray().Length);
+            Assert.AreEqual(z1.Title, dinstictMags.ToArray()[0]);
+        }
     }
 }
