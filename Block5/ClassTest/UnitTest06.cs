@@ -24,7 +24,7 @@ namespace ClassTest
             IEnumerator innerInterval = new Interval(6, 8).GetEnumerator();
 
             int[] result = new int[9];
-            int[] expected = {7, 8, 9, 8, 9, 10, 9, 10, 11 };
+            int[] expected = { 7, 8, 9, 8, 9, 10, 9, 10, 11 };
 
             int counter = 0;
             while (outerInterval.MoveNext())
@@ -67,7 +67,7 @@ namespace ClassTest
             Interval i = new Interval(1, 5);
             int sh = 3;
 
-            int[] shiftRight = {1, 2, 3, 4, 5, 6, 7, 8 };
+            int[] shiftRight = { 1, 2, 3, 4, 5, 6, 7, 8 };
             CollectionAssert.AreEqual(shiftRight, (int[])(i >> sh));
 
             int[] shiftLeft = { 4, 5 };
@@ -83,6 +83,15 @@ namespace ClassTest
             int[] exp = { 2, 3, 4, 5, 6 };
             CollectionAssert.AreEqual(exp, (int[])(i * a));
             CollectionAssert.AreEqual(exp, (int[])(a * i));
-        } 
+        }
+
+        [TestMethod]
+        public void TestNegate()
+        {
+            Interval i = new Interval(1, 3);
+
+            int[] expected = { 3, 2, 1 };
+            CollectionAssert.AreEqual(expected, (int[])(!i));
+        }
     }
 }
