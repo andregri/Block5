@@ -39,5 +39,16 @@ namespace ClassTest
 
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestSum()
+        {
+            Interval i = new Interval(1, 5);
+            int a = 5;
+
+            int[] exp1 = { 6, 7, 8, 9, 10 };
+            CollectionAssert.AreEqual(exp1, (int[])(i + a));
+            CollectionAssert.AreEqual(exp1, (int[])(a + i));
+        }
     }
 }
