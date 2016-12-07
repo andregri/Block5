@@ -73,5 +73,16 @@ namespace ClassTest
             int[] shiftLeft = { 4, 5 };
             CollectionAssert.AreEqual(shiftLeft, (int[])(i << sh));
         }
+
+        [TestMethod]
+        public void TestMultiplication()
+        {
+            Interval i = new Interval(1, 3);
+            int a = 2;
+
+            int[] exp = { 2, 3, 4, 5, 6 };
+            CollectionAssert.AreEqual(exp, (int[])(i * a));
+            CollectionAssert.AreEqual(exp, (int[])(a * i));
+        } 
     }
 }
