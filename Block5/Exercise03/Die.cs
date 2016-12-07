@@ -14,22 +14,28 @@ namespace Exercise03
         static private Random randomNumberSupplier = new Random((int)DateTime.Now.Ticks);
         private const int maxNumberOfEyes = 6;
 
+        public event Notifier twoSixesInARow;
+        private int[] previousToss;
+
         public Die()
         {
             number = NewToss();
-            previousToss = 0;
+            previousToss = new int[] { 0, 0 };
             twoSixesInARow += Dummy; // add an empty method to avoid triggering a null event
         }
 
         public void Toss(ref int doubleSixesCounter)
         {
-            previousToss = number;
+            previousToss[0] = previousToss[1];
             number = NewToss();
+            previousToss[1] = number;
 
-            if (number == 6 && previousToss == 6)
+            if (previousToss[0] == 6 && previousToss[1] == 6)
             {
                 twoSixesInARow(ref doubleSixesCounter);
-                previousToss = 0; // initialize previous var to avoid trigger event when die tosses a third six 
+                // initialize previous var to avoid trigger event when die tosses a third six 
+                previousToss[0] = 0;
+                previousToss[1] = 0;
             }
         }
 
@@ -53,13 +59,9 @@ namespace Exercise03
             return this.Number().CompareTo(other.Number());
         }
 
-        public event Notifier twoSixesInARow;
-
         private static void Dummy(ref int c)
         {
         }
-
-        private int previousToss;
     }
 
 }
