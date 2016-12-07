@@ -98,5 +98,14 @@ namespace ClassTest
             Assert.AreEqual(1, dinstictMags.ToArray().Length);
             Assert.AreEqual(z1.Title, dinstictMags.ToArray()[0]);
         }
+
+        [TestMethod]
+        public void TestLateFee()
+        {
+            decimal[] fees = { 3.5m, 3.5m, 21m, 21m, 7m, 7m, 10.5m, 10.5m, 3.5m, 3.5m };
+
+            for (int i = 0; i < fees.Length; i++)
+                Assert.AreEqual(fees[i], items[i].CalcLateFee(14));
+        }
     }
 }
