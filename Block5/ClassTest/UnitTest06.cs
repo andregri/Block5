@@ -50,5 +50,15 @@ namespace ClassTest
             CollectionAssert.AreEqual(exp1, (int[])(i + a));
             CollectionAssert.AreEqual(exp1, (int[])(a + i));
         }
+
+        [TestMethod]
+        public void TestDifference()
+        {
+            Interval i = new Interval(1, 5);
+            int a = 5;
+
+            int[] exp = { -4, -3, -2, -1, 0 };
+            CollectionAssert.AreEqual(exp, (int[])(i - a));
+        }
     }
 }
