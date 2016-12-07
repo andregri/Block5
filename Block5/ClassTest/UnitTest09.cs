@@ -1,16 +1,20 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Library;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClassTest
 {
     [TestClass]
     public class UnitTest09
     {
-        Library.Library library = new Library.Library();
+        List<LibraryItem> items = new List<LibraryItem>();
+        List<LibraryPatron> patrons = new List<LibraryPatron>();
+
+        //patrons
         LibraryPatron patron1 = new LibraryPatron("Andrew", "a1w");
         LibraryPatron patron2 = new LibraryPatron("Mike", "m2o");
-
         //books
         LibraryItem b1 = new LibraryBook("Multithreading with C# Cookbook - Second Edition", "Packt Publishing", 2016, 14, "ZZ25 3G", "Eugene Agafonov");
         LibraryItem b2 = new LibraryBook("Agile Software Development: Principles, Patterns, and Practices", "Prentice Hall", 2002, 14, "ZZ27 3G", "Robert Cecil Martin ");
@@ -30,40 +34,42 @@ namespace ClassTest
         [TestInitialize]
         public void Initialize()
         {
-            //add items to library
-            library.AddLibraryBook(b1.Title, b1.Publisher, b1.CopyrightYear, b1.LoanPeriod, b1.CallNumber, ((LibraryBook)b1).Author);
-            library.AddLibraryBook(b2.Title, b2.Publisher, b2.CopyrightYear, b2.LoanPeriod, b2.CallNumber, ((LibraryBook)b2).Author);
+            //add items to list
+            items.Add(b1);
+            items.Add(b2);
+            items.Add(m1);
+            items.Add(m2);
+            items.Add(t1);
+            items.Add(t2);
+            items.Add(j1);
+            items.Add(j2);
+            items.Add(z1);
+            items.Add(z2);
 
-            library.AddLibraryMovie(m1.Title, m1.Publisher, m1.CopyrightYear, m1.LoanPeriod, m1.CallNumber, ((LibraryMediaItem)m1).Duration, ((LibraryMovie)m1).Director, ((LibraryMediaItem)m1).Medium, ((LibraryMovie)m1).Rating);
-            library.AddLibraryMovie(m2.Title, m2.Publisher, m2.CopyrightYear, m2.LoanPeriod, m2.CallNumber, ((LibraryMediaItem)m2).Duration, ((LibraryMovie)m2).Director, ((LibraryMediaItem)m2).Medium, ((LibraryMovie)m2).Rating);
-
-            library.AddLibraryMusic(t1.Title, t1.Publisher, t1.CopyrightYear, t1.LoanPeriod, t1.CallNumber, ((LibraryMediaItem)t1).Duration, ((LibraryMusic)t1).Artist, ((LibraryMediaItem)t1).Medium, ((LibraryMusic)t1).NumTracks);
-            library.AddLibraryMusic(t2.Title, t2.Publisher, t2.CopyrightYear, t2.LoanPeriod, t2.CallNumber, ((LibraryMediaItem)t2).Duration, ((LibraryMusic)t2).Artist, ((LibraryMediaItem)t2).Medium, ((LibraryMusic)t2).NumTracks);
-
-            library.AddLibraryJournal(j1.Title, j1.Publisher, j1.CopyrightYear, j1.LoanPeriod, j1.CallNumber, ((LibraryPeriodical)j1).Volume, ((LibraryPeriodical)j1).Number, ((LibraryJournal)j1).Discipline, ((LibraryJournal)j1).Editor);
-            library.AddLibraryJournal(j2.Title, j2.Publisher, j2.CopyrightYear, j2.LoanPeriod, j2.CallNumber, ((LibraryPeriodical)j2).Volume, ((LibraryPeriodical)j2).Number, ((LibraryJournal)j2).Discipline, ((LibraryJournal)j2).Editor);
-
-            library.AddLibraryMagazine(z1.Title, z1.Publisher, z1.CopyrightYear, z1.LoanPeriod, z1.CallNumber, ((LibraryPeriodical)z1).Volume, ((LibraryPeriodical)z1).Number);
-            library.AddLibraryMagazine(z2.Title, z2.Publisher, z2.CopyrightYear, z2.LoanPeriod, z2.CallNumber, ((LibraryPeriodical)z2).Volume, ((LibraryPeriodical)z2).Number);
-
-            //add patrons
-            library.AddPatron(patron1.PatronName, patron1.PatronID);
-            library.AddPatron(patron2.PatronName, patron2.PatronID);
+            //add patrons to list
+            patrons.Add(patron1);
+            patrons.Add(patron2);
 
             //checkout some items
-            library.CheckOut(0, 0);
-            library.CheckOut(3, 0);
-            library.CheckOut(6, 0);
+            items[0].CheckOut(patron1);
+            items[3].CheckOut(patron1);
+            items[6].CheckOut(patron1);
 
-            library.CheckOut(1, 1);
-            library.CheckOut(2, 1);
-            library.CheckOut(5, 1);
-            library.CheckOut(8, 1);
+            items[1].CheckOut(patron2);
+            items[2].CheckOut(patron2);
+            items[5].CheckOut(patron2);
+            items[8].CheckOut(patron2);
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestCheckedOutItems()
         {
+            var checkedItems = from item in items
+                                   where item.IsCheckedOut()
+                                   select item;
+
+            foreach (var i in checkedItems)
+                Assert.IsTrue(i.IsCheckedOut());
         }
     }
 }
