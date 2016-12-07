@@ -60,5 +60,18 @@ namespace ClassTest
             int[] exp = { -4, -3, -2, -1, 0 };
             CollectionAssert.AreEqual(exp, (int[])(i - a));
         }
+
+        [TestMethod]
+        public void TestShift()
+        {
+            Interval i = new Interval(1, 5);
+            int sh = 3;
+
+            int[] shiftRight = {1, 2, 3, 4, 5, 6, 7, 8 };
+            CollectionAssert.AreEqual(shiftRight, (int[])(i >> sh));
+
+            int[] shiftLeft = { 4, 5 };
+            CollectionAssert.AreEqual(shiftLeft, (int[])(i << sh));
+        }
     }
 }
