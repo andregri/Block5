@@ -110,14 +110,31 @@ namespace ClassTest
         {
             var books = from i in items
                         where i is LibraryBook
-                        select i;
+                        select new { i.Title, i.LoanPeriod };
+            
+            string[] titlesExp = { b1.Title, b2.Title };
+            var titles = books.Select(b => b.Title).ToArray();
+            CollectionAssert.AreEqual(titlesExp, titles);
+            
+            int[] loansExp = { b1.LoanPeriod, b2.LoanPeriod };
+            var loans = books.Select(b => b.LoanPeriod).ToArray();
+            CollectionAssert.AreEqual(loansExp, loans);
+        }
+
+        [TestMethod]
+        public void TestAdd7DaysAndSelect()
+        {
+            int[] loansExp = { b1.LoanPeriod + 7, b2.LoanPeriod + 7 };
+
+            var books = from i in items
+                        where i is LibraryBook
+                        select new { i.Title, LoanPeriod = i.LoanPeriod + 7};
 
             var titles = books.Select(b => b.Title).ToArray();
             string[] titlesExp = { b1.Title, b2.Title };
             CollectionAssert.AreEqual(titlesExp, titles);
 
             var loans = books.Select(b => b.LoanPeriod).ToArray();
-            int[] loansExp = { b1.LoanPeriod, b2.LoanPeriod };
             CollectionAssert.AreEqual(loansExp, loans);
         }
     }
