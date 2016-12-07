@@ -1,7 +1,8 @@
 ﻿// File: LibraryPeriodical.cs
 // This file creates an abstract LibraryPeriodical class that adds
 // volume and number.
-// LibraryPeriodical IS-A LibraryItem
+// LibraryPeriodical IS-A LibraryItem
+
 using System;
 
 namespace Library

@@ -1,7 +1,8 @@
 ﻿// File: LibraryMusic.cs
 // This file creates a concrete LibraryMusic class that adds
 // artist and number of tracks.
-// LibraryMusic IS-A LibraryMediaItem
+// LibraryMusic IS-A LibraryMediaItem
+
 using System;
 
 namespace Library

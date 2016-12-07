@@ -143,4 +143,5 @@ namespace Library
                 result += "Not Checked Out";
             return result;
         }
-    }}
+    }
+}
