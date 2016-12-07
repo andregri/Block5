@@ -104,5 +104,21 @@ namespace ClassTest
             for (int i = 0; i < fees.Length; i++)
                 Assert.AreEqual(fees[i], items[i].CalcLateFee(14));
         }
+
+        [TestMethod]
+        public void TestSelectBooks()
+        {
+            var books = from i in items
+                        where i is LibraryBook
+                        select i;
+
+            var titles = books.Select(b => b.Title).ToArray();
+            string[] titlesExp = { b1.Title, b2.Title };
+            CollectionAssert.AreEqual(titlesExp, titles);
+
+            var loans = books.Select(b => b.LoanPeriod).ToArray();
+            int[] loansExp = { b1.LoanPeriod, b2.LoanPeriod };
+            CollectionAssert.AreEqual(loansExp, loans);
+        }
     }
 }
