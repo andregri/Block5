@@ -65,11 +65,26 @@ namespace ClassTest
         public void TestCheckedOutItems()
         {
             var checkedItems = from item in items
-                                   where item.IsCheckedOut()
-                                   select item;
+                               where item.IsCheckedOut()
+                               select item;
 
             foreach (var i in checkedItems)
                 Assert.IsTrue(i.IsCheckedOut());
+        }
+
+        [TestMethod]
+        public void TestCheckedOutMediaItems()
+        {
+            var checkedMediaItems = from item in items
+                                    where item is LibraryMediaItem
+                                    where item.IsCheckedOut()
+                                    select item;
+
+            foreach (var i in checkedMediaItems)
+            {
+                Assert.IsTrue(i.IsCheckedOut());
+                Assert.IsTrue(i is LibraryMediaItem);
+            }
         }
     }
 }
