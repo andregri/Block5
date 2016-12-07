@@ -8,8 +8,8 @@ namespace ClassTest
     public class UnitTest09
     {
         Library.Library library = new Library.Library();
-        LibraryPatron patron1 = new LibraryPatron("Andrew", "1");
-        LibraryPatron patron2 = new LibraryPatron("Mike", "2");
+        LibraryPatron patron1 = new LibraryPatron("Andrew", "a1w");
+        LibraryPatron patron2 = new LibraryPatron("Mike", "m2o");
 
         //books
         LibraryItem b1 = new LibraryBook("Multithreading with C# Cookbook - Second Edition", "Packt Publishing", 2016, 14, "ZZ25 3G", "Eugene Agafonov");
@@ -30,6 +30,7 @@ namespace ClassTest
         [TestInitialize]
         public void Initialize()
         {
+            //add items to library
             library.AddLibraryBook(b1.Title, b1.Publisher, b1.CopyrightYear, b1.LoanPeriod, b1.CallNumber, ((LibraryBook)b1).Author);
             library.AddLibraryBook(b2.Title, b2.Publisher, b2.CopyrightYear, b2.LoanPeriod, b2.CallNumber, ((LibraryBook)b2).Author);
 
@@ -44,6 +45,20 @@ namespace ClassTest
 
             library.AddLibraryMagazine(z1.Title, z1.Publisher, z1.CopyrightYear, z1.LoanPeriod, z1.CallNumber, ((LibraryPeriodical)z1).Volume, ((LibraryPeriodical)z1).Number);
             library.AddLibraryMagazine(z2.Title, z2.Publisher, z2.CopyrightYear, z2.LoanPeriod, z2.CallNumber, ((LibraryPeriodical)z2).Volume, ((LibraryPeriodical)z2).Number);
+
+            //add patrons
+            library.AddPatron(patron1.PatronName, patron1.PatronID);
+            library.AddPatron(patron2.PatronName, patron2.PatronID);
+
+            //checkout some items
+            library.CheckOut(0, 0);
+            library.CheckOut(3, 0);
+            library.CheckOut(6, 0);
+
+            library.CheckOut(1, 1);
+            library.CheckOut(2, 1);
+            library.CheckOut(5, 1);
+            library.CheckOut(8, 1);
         }
 
         [TestMethod]
