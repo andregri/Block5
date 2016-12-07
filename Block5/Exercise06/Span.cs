@@ -131,7 +131,10 @@ namespace Exercise06
                 }
                 else
                 {
-                    return From + (index % Length);
+                    if (From < To)
+                        return From + (index % Length);
+                    else
+                        return From - (index % Length);
                 }
             }
         }
