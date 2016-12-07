@@ -116,5 +116,24 @@ namespace Exercise06
         {
             return new IntervalEnumerator(this);
         }
+
+        public int this[int index]
+        {
+            get
+            {
+                if (index == 0)
+                {
+                    return From;
+                }
+                else if (index == Length - 1)
+                {
+                    return To;
+                }
+                else
+                {
+                    return Length / index;
+                }
+            }
+        }
     }
 }
