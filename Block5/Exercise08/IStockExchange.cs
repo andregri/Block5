@@ -12,5 +12,15 @@ namespace Exercise08
         {
             get;
         }
+
+        double MaxGrowth
+        {
+            get;
+        }
+
+        decimal MaxValueMln
+        {
+            get;
+        }
     }
 }

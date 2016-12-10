@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DELLObserver.cs" />
     <Compile Include="IBMObserver.cs" />
+    <Compile Include="IStockExchange.cs" />
     <Compile Include="ObservableQuote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quote.cs" />
