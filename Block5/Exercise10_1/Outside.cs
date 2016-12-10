@@ -2,7 +2,7 @@
 
 namespace Exercise10_1
 {
-    class Outside : Location
+    public class Outside : Location
     {
         private Boolean hot;
 
