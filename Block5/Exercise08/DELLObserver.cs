@@ -8,7 +8,7 @@ namespace Exercise08
 {
     public class DELLObserver : IStockExchange, IObserver<Quote>
     {
-        private const string id = "Dell";
+        private const string id = "DELL";
         private IDisposable cancellation;
         private List<double> growthHistory = new List<double>();
         private List<decimal> valueMlnHistory = new List<decimal>();
