@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise08
 {
-    class IBMObserver : IStockExchange, IObserver<Quote>
+    public class IBMObserver : IStockExchange, IObserver<Quote>
     {
         private const string id = "IBM";
         private IDisposable cancellation;
