@@ -18,8 +18,17 @@ namespace Exercise08
         public IDisposable Subscribe(IObserver<Quote> observer)
         {
             string id = ((IStockExchange)observer).Id;
-            if (!observers[id].Contains(observer))
+            List<IObserver<Quote>> listObs;
+
+            if (!observers.TryGetValue(id, out listObs))
+            {
+                observers[id] = new List<IObserver<Quote>>();
                 observers[id].Add(observer);
+            }
+            else if (!observers[id].Contains(observer))
+            {
+                observers[id].Add(observer);
+            }
 
             return new QuoteUnsubscriber(observers[id], observer);
         }
