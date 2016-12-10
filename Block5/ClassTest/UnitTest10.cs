@@ -27,10 +27,10 @@ namespace ClassTest
 
             garden.Exits = new Location[] { backYard, frontYard };
 
-            frontYard.Exits = new Location[] { garden };
+            frontYard.Exits = new Location[] { garden, backYard };
             frontYard.DoorLocation = livingRoom;
 
-            backYard.Exits = new Location[] { garden };
+            backYard.Exits = new Location[] { garden, frontYard };
             backYard.DoorLocation = kitchen;
         }
     }
