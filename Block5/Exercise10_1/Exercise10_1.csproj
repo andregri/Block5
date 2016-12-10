@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IHasExteriorDoor.cs" />
     <Compile Include="Outside.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Location.cs" />
