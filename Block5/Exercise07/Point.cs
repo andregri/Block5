@@ -17,6 +17,11 @@ namespace Exercise07
             set { coordinateX = value; }
         }
 
+        public double CoordinateY
+        {
+            get { return coordinateY; }
+            set { coordinateY = value; }
+        }
 
         public Point(double x, double y)
         {
