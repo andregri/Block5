@@ -28,17 +28,15 @@ namespace ClassTest
         {
             Event castleParty = new Event();
 
-            castleParty.AddGuest(guests[0]);
-            castleParty.AddGuest(guests[1]);
-            castleParty.AddGuest(guests[2]);
-            castleParty.AddGuest(guests[3]);
-            castleParty.AddGuest(guests[4]);
-            castleParty.AddGuest(guests[5]);
-                       
-
-           string[] expectedName = new string[6];
             for (int i = 0; i <= 5; i++)
-            {                
+            {
+                castleParty.AddGuest(guests[i]);
+            }
+
+
+            string[] expectedName = new string[6];
+            for (int i = 0; i <= 5; i++)
+            {
                 expectedName[i] = guests[i].Name;
             }
 
