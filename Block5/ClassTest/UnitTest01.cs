@@ -6,7 +6,7 @@ using Exercise01;
 namespace ClassTest
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest01
     {
         [TestMethod]
         public void TestITaxableItems()
