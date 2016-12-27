@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise10_2
 {
-    public class RoomWithHidingPlace : Room
+    public class RoomWithHidingPlace : Room, IHidingPlace
     {
         public string HidingPlaceName
         {
@@ -14,7 +14,7 @@ namespace Exercise10_2
             private set;
         }
 
-        public RoomWithHidingPlace(string name, bool hot, string hidingPlaceName) : base(name, hot)
+        public RoomWithHidingPlace(string name, string description, string hidingPlaceName) : base(name, description)
         {
             HidingPlaceName = hidingPlaceName;
         }

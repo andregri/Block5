@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise10_2
 {
-    public class OutsideWithHidingPlace : Outside
+    public class OutsideWithHidingPlace : Outside, IHidingPlace
     {
         public string HidingPlaceName
         {
