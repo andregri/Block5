@@ -4,14 +4,14 @@ namespace Exercise10_1
 {
     public class HouseMove 
     {
-        private Location CurrentLocation { get; set; }
+        public Location CurrentLocation { get; set; }
 
         public HouseMove(Location currentLocation) 
         {
             CurrentLocation = currentLocation;
         }
 
-		void MoveToANewLocation(Location newLocation)
+		public void MoveToANewLocation(Location newLocation)
 		{
 			CurrentLocation = newLocation;
 		}

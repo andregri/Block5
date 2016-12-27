@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise10_1
 {
-    interface IHasExteriorDoor
+    public interface IHasExteriorDoor
     {
         string DoorDescription
         {
