@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise10_2
 {
-    interface IHidingPlace
+    public interface IHidingPlace
     {
         string HidingPlaceName
         {
