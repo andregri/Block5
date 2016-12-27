@@ -63,6 +63,7 @@
     <Compile Include="UnitTest07.cs" />
     <Compile Include="UnitTest08.cs" />
     <Compile Include="UnitTest09.cs" />
+    <Compile Include="UnitTest10_Part2.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Exercise01\Exercise01.csproj">

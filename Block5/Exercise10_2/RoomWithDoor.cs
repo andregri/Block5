@@ -8,7 +8,7 @@ namespace Exercise10_2
 {
     public class RoomWithDoor : RoomWithHidingPlace, IHasExteriorDoor
     {
-        public RoomWithDoor(string name, string decoration, string doorDescription) : base(name, decoration)
+        public RoomWithDoor(string name, string decoration, string hidingPlaceName, string doorDescription) : base(name, decoration, hidingPlaceName)
         {
             DoorDescription = doorDescription;
         }
