@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Exercise10_2
 {
-    public class Class1
+    public interface IHidingPlace
     {
+        string HidingPlaceName
+        {
+            get;
+        }
     }
 }
