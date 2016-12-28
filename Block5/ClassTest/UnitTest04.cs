@@ -38,7 +38,7 @@ namespace ClassTest
             Assert.AreEqual(1, diff.RealPart);
             Assert.AreEqual(8, diff.ImaginaryPart);
         }
-        
+
         [TestMethod]
         public void TestComplexMult()
         {
@@ -60,11 +60,33 @@ namespace ClassTest
         [TestMethod]
         public void TestComplexConiugate()
         {
-            Assert.AreEqual(5,(~numbers[0]).RealPart);
-            Assert.AreEqual(-3,(~numbers[0]).ImaginaryPart);
+            Assert.AreEqual(5, (~numbers[0]).RealPart);
+            Assert.AreEqual(-3, (~numbers[0]).ImaginaryPart);
 
             Assert.AreEqual(1, (~numbers[3]).RealPart);
             Assert.AreEqual(7, (~numbers[3]).ImaginaryPart);
+        }
+
+        [TestMethod]
+        public void TestTriBool()
+        {
+            Tribool trueBool = Tribool.True;
+            Tribool falseBool = Tribool.False;
+
+            Assert.AreEqual(true, trueBool);
+            Assert.AreEqual(false, falseBool);
+        }
+
+        [TestMethod]
+        public void TestTriBoolOperator()
+        {
+            Tribool firstTrueBool = Tribool.True;
+            Tribool secondTrueBool = Tribool.True;
+            Tribool falseBool = Tribool.False;
+
+            Assert.AreEqual(true, firstTrueBool & secondTrueBool);
+            Assert.AreEqual(false, firstTrueBool | falseBool);
+            Assert.AreEqual(true, !falseBool);
         }
     }
 }

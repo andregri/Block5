@@ -10,28 +10,11 @@ namespace Exercise04
     // this interface indicates whether the current object is equal to another object of the same type
     public class Tribool : IEquatable<Tribool>
     {
-
-        public static Tribool True { get { return new Tribool(1); } }
-        public static Tribool False { get { return new Tribool(-1); } }
-        public static Tribool Indeterminate { get { return new Tribool(0); } }
-        enum TriboolState { Indeterminate, True, False }
+        public static Tribool True = new Tribool(1);
+        public static Tribool False = new Tribool(-1);
+        public static Tribool Indeterminate = new Tribool(0);
 
         private int value;
-        private TriboolState state;
-
-        private TriboolState State
-        {
-            get { return state; }
-            set
-            {
-                if (value > 0)
-                    state = TriboolState.True;
-                else if (state == 0)
-                    state = TriboolState.Indeterminate;
-                else
-                    state = TriboolState.False;
-            }
-        }
 
         private int Value
         {
@@ -41,7 +24,6 @@ namespace Exercise04
 
         public Tribool(int value)
         {
-            State = state;
             Value = value;
         }
 
@@ -49,21 +31,21 @@ namespace Exercise04
         // true
         public static bool operator true(Tribool firstNumber)
         {
-            return firstNumber.state == TriboolState.True;
+            return firstNumber.value > 0;
         }
         // false 
         public static bool operator false(Tribool firstNumber)
         {
-            return firstNumber.state == TriboolState.False;
+            return firstNumber.value < 0;
         }
 
         // logical operator
         // And
         public static Tribool operator &(Tribool firstNumber, Tribool secondNumber)
         {
-            if (firstNumber.state == TriboolState.False && secondNumber.state == TriboolState.False)
+            if (firstNumber.value < 0 && secondNumber.value < 0)
                 return False;
-            if (firstNumber.state == TriboolState.Indeterminate && secondNumber.state == TriboolState.Indeterminate)
+            if (firstNumber.value == 0 && secondNumber.value == 0)
                 return Indeterminate;
             else
                 return True;
@@ -71,9 +53,9 @@ namespace Exercise04
         // Or
         public static Tribool operator |(Tribool firstNumber, Tribool secondNumber)
         {
-            if (firstNumber.state == TriboolState.True && secondNumber.state == TriboolState.True)
+            if (firstNumber.value > 0 && secondNumber.value > 0)
                 return True;
-            if (firstNumber.state == TriboolState.Indeterminate && secondNumber.state == TriboolState.Indeterminate)
+            if (firstNumber.value == 0 && secondNumber.value == 0)
                 return Indeterminate;
             else
                 return False;
@@ -83,7 +65,7 @@ namespace Exercise04
         // equal 
         public static Tribool operator ==(Tribool firstNumber, Tribool secondNumber)
         {
-            if (firstNumber.state == 0 || secondNumber.state == 0)
+            if (firstNumber.value == 0 || secondNumber.value == 0)
                 return Indeterminate;
 
             return firstNumber.value == secondNumber.value;
@@ -96,9 +78,9 @@ namespace Exercise04
         // not
         public static Tribool operator !(Tribool firstNumber)
         {
-            if (firstNumber.state == TriboolState.Indeterminate)
+            if (firstNumber.value == 0)
                 return Indeterminate;
-            else if (firstNumber.state == TriboolState.False)
+            else if (firstNumber.value < 0)
                 return True;
             else
                 return False;
@@ -117,7 +99,7 @@ namespace Exercise04
         // GetHashCode
         public override int GetHashCode()
         {
-            return state.GetHashCode();
+            return value.GetHashCode();
         }
         
         // implicit/explicit operator
@@ -130,11 +112,14 @@ namespace Exercise04
         // explicit
         public static explicit operator bool(Tribool value)
         {
-            switch (value.state)
+            switch (value.value)
             {
-                case TriboolState.True: return true;
-                case TriboolState.False: return false;
-                default: throw new InvalidCastException("Cast is not possible with indeterminate value");
+                case 1:
+                    return true;
+                case -1:
+                    return false;
+                default:
+                    throw new InvalidCastException("Cast is not possible with indeterminate value");
             }
         }
     }
